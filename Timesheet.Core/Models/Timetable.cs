@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Timesheet.Core.Models
 {
-    internal class Timetable
+    public class Timetable
     {
-        public string Id { get; }
-        public Day[] days { get; set; }
+        public Timetable(string id, Day[] days)
+        {
+            Id = id;
+            Days = days;
+        }
+
+        /// <summary>
+        /// Id группы 
+        /// </summary>
+        public string Id { get; set; } 
+        public Day[] Days { get; set; }
 
     }
 }

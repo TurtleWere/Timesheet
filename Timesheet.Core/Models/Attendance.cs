@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Timesheet.Core.Models
 {
-    internal class Attendance
+    public class Attendance
     {
         public string Group_id { get; set; }
         public Guid Student_id { get; set; }
         public int Day_id { get; set; }
-        public int Class_num { get; set; }
-        public string Status { get; set; }
+        public int Class_num { get; set; } /// <summary>
+        /// номер пары по счету
+        /// </summary>
+        public Status Status { get; set; }
         public string Description { get; set; } = string.Empty;
 
+    }
+    public enum Status{
+        Присутсвует = 0,
+        Отсутсвует = 1,
+        По_уважительной = 2,
     }
 }

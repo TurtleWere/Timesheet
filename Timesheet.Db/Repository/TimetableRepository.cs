@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Timesheet.Core.Interfaces
+namespace Timesheet.Db.Repository
 {
-    public interface ITimesheetRepository
+    internal class TimetableRepository
     {
-        
     }
 }

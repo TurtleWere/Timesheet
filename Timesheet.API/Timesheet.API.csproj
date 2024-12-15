@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Timesheet.Core\Timesheet.Core.csproj" />
+    <ProjectReference Include="..\Timesheet.Db\Timesheet.Db.csproj" />
+  </ItemGroup>
+
 </Project>

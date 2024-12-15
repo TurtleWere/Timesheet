@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.API", "Timesheet.API.csproj", "{E6373297-A903-4DFB-83CE-6B6897C1D386}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8EA4168B-681E-40F8-B144-9F12A957DCE2} = {8EA4168B-681E-40F8-B144-9F12A957DCE2}
+		{FB87C78E-905A-4297-B5C4-8D1C3B757E04} = {FB87C78E-905A-4297-B5C4-8D1C3B757E04}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Core", "..\Timesheet.Core\Timesheet.Core.csproj", "{FB87C78E-905A-4297-B5C4-8D1C3B757E04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timesheet.Db", "..\Timesheet.Db\Timesheet.Db.csproj", "{8EA4168B-681E-40F8-B144-9F12A957DCE2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB87C78E-905A-4297-B5C4-8D1C3B757E04} = {FB87C78E-905A-4297-B5C4-8D1C3B757E04}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

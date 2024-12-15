@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Timesheet.Core.Models
 {
-    internal class Day
+    public class Day
     {
-        public int Id { get;  }
-        public string Group_id { get; }
-        public List<Class> classes { get; }
+        public int Id { get; set;  }
+        public string Group_id { get; set; }
+        public List<Class> Classes { get; set;}
 
     }
 }

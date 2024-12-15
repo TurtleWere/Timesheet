@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Timesheet.Core.Models
 {
-    internal class Student
+    public class Student
     {
 
-        public Guid Id { get; }
-        public string Name { get; }
-        public string Group_id { get; }
 
+        public Guid Id  { get; set; }
+        public string Name { get; set;}
+        public string Group_id { get; set;}
+
+        public Student() { }
         public Student(Guid id, string name, string group_id)
         {
             Id = id;

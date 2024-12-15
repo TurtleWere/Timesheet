@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Timesheet.Core.Models;
 
 namespace Timesheet.Core.Interfaces
 {
-    public interface ITimesheetRepository
+    public interface ITimetableRepository
     {
-        
+        Timetable Get(int id);
+
     }
 }

@@ -10,7 +10,7 @@ namespace Timesheet.Db.Repository
     public class StudentRepository : IStudentRepository
     {
         private readonly string _connectionstring;
-        public StudentRepository(string constring=@"Data Source=App.db;") 
+        public StudentRepository(string constring=@"Data Source=TimesheetDb.db;") 
         {
             _connectionstring = constring;
         }
@@ -78,7 +78,7 @@ namespace Timesheet.Db.Repository
             using (var db = new SqliteConnection(_connectionstring))
             {
                 db.Open();
-                var sql = @"CREATE TABLE IF NOT EXISTS Students (id text PRIMARY KEY, name text, group_id text);";
+                var sql = @"CREATE TABLE IF NOT EXISTS Timetable (id text PRIMARY KEY, days TEXT ARRAY);";
                 db.Execute(sql);
             }
         }

@@ -10,7 +10,7 @@ namespace Timesheet.Core.Models
     {
         public int Id { get; set;  }
         public string Group_id { get; set; }
-        public List<Class> Classes { get; set;}
+        public List<Lesson> Lessons { get; set;}
 
     }
 }

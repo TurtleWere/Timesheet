@@ -6,7 +6,7 @@ namespace Timesheet.Core.Models
         public string Group_id { get; set; }
         public Guid Student_id { get; set; }
         public int Day_id { get; set; }
-        public int Class_num { get; set; } /// <summary>
+        public int Lesson_num { get; set; } /// <summary>
         /// номер пары по счету
         /// </summary>
         public Status Status { get; set; }

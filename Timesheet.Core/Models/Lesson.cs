@@ -1,17 +1,17 @@
 ﻿
 namespace Timesheet.Core.Models
 {
-    public class Class
+    public class Lesson
     {
 
 
         public string Name { get; set; }
-        public int Class_num { get; set; }
+        public int Lesson_id { get; set; }
         public int Day_id { get; set; }
-        public Class(string name, int class_num, int day_id)
+        public Lesson(string name, int lesson_id, int day_id)
         {
             Name = name;
-            Class_num = class_num;
+            Lesson_id = lesson_id;
             Day_id = day_id;
         }
     }

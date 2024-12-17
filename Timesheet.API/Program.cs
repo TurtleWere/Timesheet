@@ -1,4 +1,3 @@
-
 using Timesheet.Core.Interfaces;
 using Timesheet.Db.Repository;
 
@@ -10,7 +9,9 @@ namespace Timesheet.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddTransient<IStudentRepository, StudentRepository>();
+            var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
+            builder.Services.AddScoped<IStudentRepository>(provider => new StudentRepository(connectionString));
+            
             builder.Services.AddControllers();
  
             builder.Services.AddEndpointsApiExplorer();

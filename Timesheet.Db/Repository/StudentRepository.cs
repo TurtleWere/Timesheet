@@ -10,7 +10,7 @@ namespace Timesheet.Db.Repository
     public class StudentRepository : IStudentRepository
     {
         private readonly string _connectionstring;
-        public StudentRepository(string constring=@"Data Source=TimesheetDb.db;") 
+        public StudentRepository(string constring)
         {
             _connectionstring = constring;
         }

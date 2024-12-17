@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Timesheet.Db\Timesheet.Db.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TimesheetDb.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

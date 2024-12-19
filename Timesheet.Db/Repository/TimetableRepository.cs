@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Timesheet.Db.Repository
 {
-    internal class TimetableRepository
+    public class TimetableRepository
     {
     }
 }

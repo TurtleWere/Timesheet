@@ -3,12 +3,13 @@ namespace Timesheet.Core.Models
 {
     public class Attendance
     {
-        public string Group_id { get; set; }
-        public Guid Student_id { get; set; }
-        public int Day_id { get; set; }
-        public int Lesson_num { get; set; } /// <summary>
+        public string GroupId { get; set; }
+        public Guid StudentId { get; set; }
+        public int DayId { get; set; }
+        /// <summary>
         /// номер пары по счету
         /// </summary>
+        public int LessonNum { get; set; } 
         public Status Status { get; set; }
         public string Description { get; set; } = string.Empty;
 

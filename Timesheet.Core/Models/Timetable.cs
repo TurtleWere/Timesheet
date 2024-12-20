@@ -4,17 +4,18 @@ namespace Timesheet.Core.Models
 {
     public class Timetable
     {
-        public Timetable(string id, Day[] days)
+        public Timetable(string id, List<Lesson> lessons)
         {
             Id = id;
-            Days = days;
+            Lessons = lessons;
         }
+
 
         /// <summary>
         /// Id группы 
         /// </summary>
         public string Id { get; set; } 
-        public Day[] Days { get; set; }
+        public List<Lesson> Lessons { get; set; }
 
     }
 }

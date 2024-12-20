@@ -9,8 +9,8 @@ namespace Timesheet.Core.Interfaces
 {
     public interface ITimetableRepository
     {
-        IEnumerable<Timetable> GetTimetable(string id);
-        Timetable UpdateTimetable(string id, int day_id, int lesson_id);
+        Timetable GetTimetable(string id);
+        Timetable UpdateTimetable(string group_id, int day_id, int lesson_id);
 
     }
 }

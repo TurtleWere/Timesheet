@@ -1,12 +1,10 @@
-
-
 using Timesheet.Core.Models;
-
 namespace Timesheet.Core.Interfaces
 {
     public interface IAttendanceRepository
     {
-        IEnumerable<Attendance> GetAttendances()
-        
+        IEnumerable<Statistic> GetAttendances(Guid student_id);
+        bool CreateAttendance(Attendance attendance);
+        public void CreateTable();
     }
 }

@@ -17,12 +17,14 @@ namespace Timesheet.Db.Repository
         {
             _conectionstring = constring;
         }
+
+
         public Timetable GetTimetable(string id)
         {
             using (var db = new SqliteConnection(_conectionstring))
             {
                 db.Open();
-                var sql = @"SELECT day_id, lesson_id, name FROM Lessons WHERE group_id = @id;";
+                var sql = @"SELECT day_id, lesson_id, name FROM Lessons WHERE group_id = @id ORDER BY day_id ASC;";
                 var lessons = db.Query<Lesson>(sql, new { id = id }).ToList();
                 var timetable = new Timetable(id, lessons);
                 return timetable;
@@ -34,7 +36,7 @@ namespace Timesheet.Db.Repository
             using (var db = new SqliteConnection(_conectionstring))
             {
                 db.Open();
-                var sql = @"DELETE FROM Lessons WHERE group_id = @group_id, day_id = @day_id, lesson_id = @lesson_id;";
+                var sql = @"DELETE FROM Lessons WHERE group_id = @group_id AND day_id = @day_id AND lesson_id = @lesson_id;";
                 var lessons = db.Query<Lesson>(sql, new { group_id = group_id, day_id = day_id, lesson_id = lesson_id }).ToList();
                 return new Timetable(group_id, lessons);
             }

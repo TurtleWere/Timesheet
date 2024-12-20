@@ -6,13 +6,13 @@ namespace Timesheet.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StudentsController : ControllerBase
+    public class StudentController : ControllerBase
     {
         
-        private readonly ILogger<StudentsController> _logger;
+        private readonly ILogger<StudentController> _logger;
         private readonly IStudentRepository _studentRepository;
         private readonly IConfiguration _configuration;
-        public StudentsController(ILogger<StudentsController> logger, IStudentRepository studentRepository, IConfiguration configuration)
+        public StudentController(ILogger<StudentController> logger, IStudentRepository studentRepository, IConfiguration configuration)
         {
             _logger = logger;
             _studentRepository = studentRepository;

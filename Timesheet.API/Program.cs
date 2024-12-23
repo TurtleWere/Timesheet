@@ -12,6 +12,7 @@ namespace Timesheet.API
             var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
             builder.Services.AddScoped<IStudentRepository>(provider => new StudentRepository(connectionString));
             builder.Services.AddScoped<ITimetableRepository>(provider => new TimetableRepository(connectionString));
+            builder.Services.AddScoped<IAttendanceRepository>(provider => new AttendanceRepository(connectionString));
 
             builder.Services.AddControllers();
  

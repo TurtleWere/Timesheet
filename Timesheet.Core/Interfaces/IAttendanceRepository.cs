@@ -5,6 +5,9 @@ namespace Timesheet.Core.Interfaces
     {
         IEnumerable<Statistic> GetAttendances(Guid student_id);
         bool CreateAttendance(Attendance attendance);
+
+        void UpdateAttendance(Attendance attendance);
+
         public void CreateTable();
     }
 }

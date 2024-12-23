@@ -18,12 +18,22 @@ namespace Timesheet.Db.Repository
             using (var db = new SqliteConnection(_connectionstring))
             {
                 db.Open();
-                var sql = @"SELECT s.id, s.name, a.student_id, a.description
-                SUM(CASE WHEN a.status = 0 THEN 1 ELSE 0 END) * 1.5 AS hours_was,
-                SUM(CASE WHEN a.status = 1 THEN 1 ELSE 0 END) * 1.5 AS hours_wasnt,
-                SUM(CASE WHEN a.status = 2 THEN 1 ELSE 0 END) * 1.5 AS hours_for_reason 
-                FROM Students s JOIN Attendance a ON s.id = a.student_id WHERE s.id = @Student_id";
-                var results = db.Query<Statistic>(sql, new { Student_id = student_id });
+                var sql = @"SELECT 
+    s.id, 
+    s.name, 
+    a.student_id, 
+    a.description, 
+    SUM(CASE WHEN a.status = 0 THEN 1 ELSE 0 END) * 1.5 AS hours_was, 
+    SUM(CASE WHEN a.status = 1 THEN 1 ELSE 0 END) * 1.5 AS hours_wasnt, 
+    SUM(CASE WHEN a.status = 2 THEN 1 ELSE 0 END) * 1.5 AS hours_for_reason, 
+    COUNT(*) AS total_records, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 0 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_was, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 1 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_wasnt, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 2 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_for_reason 
+FROM Students s 
+JOIN Attendance a ON s.id = a.student_id 
+WHERE s.id = @student_id;";
+                IEnumerable<Statistic> results = db.Query<Statistic>(sql, new { student_id = student_id });
                 return results;
                 
             }
@@ -52,6 +62,17 @@ namespace Timesheet.Db.Repository
             throw new NotImplementedException();
         }
 
+        public void UpdateAttendance(Attendance attendance)
+        {
+            using (var db = new SqliteConnection(_connectionstring))
+            {
+                db.Open();
+                var sql = @"UPDATE Attendance SET status = @attendance.Status, description = @attendance.Description WHERE group_id = @attendance.GroupId AND student_id = @attendance.StudentId AND day_id = @attendance.DayId AND @attendance.LessonId;";
+
+                db.Execute(sql, attendance);
+
+            }
+        }
 
     }
 }

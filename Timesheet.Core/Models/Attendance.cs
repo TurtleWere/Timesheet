@@ -24,9 +24,10 @@ namespace Timesheet.Core.Models
         public string Description { get; set; } = string.Empty;
 
     }
-    public enum Status{
-        Присутсвует = 0,
-        Отсутсвует = 1,
-        По_уважительной = 2,
+    public enum Status
+    {
+        Present = 0,
+        Absent = 1,
+        Excused = 2,
     }
 }

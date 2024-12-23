@@ -19,23 +19,18 @@ namespace Timesheet.Db.Repository
             {
                 db.Open();
                 var sql = @"SELECT 
-    s.id, 
-    s.name, 
-    a.student_id, 
-    a.description, 
-    SUM(CASE WHEN a.status = 0 THEN 1 ELSE 0 END) * 1.5 AS hours_was, 
-    SUM(CASE WHEN a.status = 1 THEN 1 ELSE 0 END) * 1.5 AS hours_wasnt, 
-    SUM(CASE WHEN a.status = 2 THEN 1 ELSE 0 END) * 1.5 AS hours_for_reason, 
-    COUNT(*) AS total_records, 
-    ROUND(100.0 * SUM(CASE WHEN a.status = 0 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_was, 
-    ROUND(100.0 * SUM(CASE WHEN a.status = 1 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_wasnt, 
-    ROUND(100.0 * SUM(CASE WHEN a.status = 2 THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_for_reason 
-FROM Students s 
+    s.name as StudentName, 
+    SUM(CASE WHEN a.status = 'Present' THEN 1 ELSE 0 END) * 1.5 AS HoursWas, 
+    SUM(CASE WHEN a.status = 'Absent' THEN 1 ELSE 0 END) * 1.5 AS HoursWasnt, 
+    SUM(CASE WHEN a.status = 'Excused' THEN 1 ELSE 0 END) * 1.5 AS HoursForReason, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 'Present' THEN 1 ELSE 0 END) / COUNT(*), 2) AS PercentWas, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 'Absent' THEN 1 ELSE 0 END) / COUNT(*), 2) AS PercentWasnt, 
+    ROUND(100.0 * SUM(CASE WHEN a.status = 'Excused' THEN 1 ELSE 0 END) / COUNT(*), 2) AS PercentForReason
+FROM Students s
 JOIN Attendance a ON s.id = a.student_id 
 WHERE s.id = @student_id;";
-                IEnumerable<Statistic> results = db.Query<Statistic>(sql, new { student_id = student_id });
+                List<Statistic> results = db.Query<Statistic>(sql, new { student_id = student_id }).ToList();
                 return results;
-                
             }
         }
         public bool CreateAttendance(Attendance attendance)

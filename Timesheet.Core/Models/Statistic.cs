@@ -4,14 +4,14 @@
     {
         public Statistic(){}
 
-        public string Student_name { get; set; }
-        public int Hours_was {  get; set; }
-        public int Hours_wasnt { get; set; }
-        public int Hours_forReason { get; set; }
+        public string StudentName { get; set; }
+        public float HoursWas {  get; set; }
+        public float HoursWasnt { get; set; }
+        public float HoursForReason { get; set; }
 
-        public float precent_was { get; set; }
-        public float precent_wasnt { get; set; }
-        public float precent_forReason { get; set; }
+        public float PercentWas { get; set; }
+        public float PercentWasnt { get; set; }
+        public float PercentForReason { get; set; }
 
     }
 }

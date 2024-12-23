@@ -7,7 +7,7 @@ namespace Timesheet.Core.Interfaces
         bool CreateAttendance(Attendance attendance);
 
         void UpdateAttendance(Attendance attendance);
-
+        
         public void CreateTable();
     }
 }

@@ -27,9 +27,9 @@ namespace Timesheet.Db.Repository
     ROUND(100.0 * SUM(CASE WHEN a.status = 'Absent' THEN 1 ELSE 0 END) / COUNT(*), 2) AS PercentWasnt, 
     ROUND(100.0 * SUM(CASE WHEN a.status = 'Excused' THEN 1 ELSE 0 END) / COUNT(*), 2) AS PercentForReason
 FROM Students s
-JOIN Attendance a ON s.id = a.student_id 
-WHERE s.id = @student_id;";
-                List<Statistic> results = db.Query<Statistic>(sql, new { student_id = student_id }).ToList();
+JOIN Attendance a ON s.id = a.student_id
+WHERE id=@Studentota_id;";
+                var results = db.Query<Statistic>(sql, new { Studentota_id = Convert.ToString(student_id)});
                 return results;
             }
         }
